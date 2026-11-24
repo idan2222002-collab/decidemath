@@ -403,7 +403,190 @@
       <div class="stats">${extra}</div>`);
   }
 
-  const calculators = { mortgage, capRate, cashOnCash, compound, freelance, vat, emi, salaryHourly, inflation, fire, rentVsBuy, percentage };
+
+  function israelNet(form, root) {
+    const gross = num(form, "gross");
+    const points = num(form, "points");
+    const pointValue = num(form, "pointValue");
+    const other = num(form, "other") ?? 0;
+    if (gross === null || points === null || pointValue === null || gross < 0 || points < 0 || pointValue < 0 || other < 0) {
+      show(root, `<h2>Results</h2><p class="warn">Enter a monthly gross salary of 0 or more, credit points, and the credit-point value.</p>`);
+      return;
+    }
+    const brackets = [
+      [7010, 0.10],
+      [10060, 0.14],
+      [19000, 0.20],
+      [25100, 0.31],
+      [46690, 0.35],
+      [Infinity, 0.47]
+    ];
+    let tax = 0, prev = 0;
+    for (const [cap, rate] of brackets) {
+      if (gross <= prev) break;
+      tax += (Math.min(gross, cap) - prev) * rate;
+      prev = cap;
+    }
+    const credits = points * pointValue;
+    const taxAfter = Math.max(0, tax - credits);
+    const niMax = 51910, niBand = 7703;
+    const niBase = Math.min(gross, niMax);
+    const low = Math.min(niBase, niBand);
+    const high = Math.max(niBase - niBand, 0);
+    const ni = low * 0.0104 + high * 0.07;
+    const health = low * 0.0323 + high * 0.0517;
+    const net = gross - taxAfter - ni - health - other;
+    const effective = gross > 0 ? ((gross - net) / gross) * 100 : 0;
+    show(root, `
+      <h2>Results</h2>
+      <p class="big">${money(net)}</p>
+      <p class="unit">estimated monthly net, in ₪</p>
+      <div class="stats">
+        ${stat("Income tax after credits", money(taxAfter))}
+        ${stat("Tax before credits", money(tax))}
+        ${stat("Credit used", money(Math.min(credits, tax)))}
+        ${stat("National Insurance (employee)", money(ni))}
+        ${stat("Health insurance (employee)", money(health))}
+        ${stat("Other deductions", money(other))}
+        ${stat("Effective deduction rate", pct(effective))}
+      </div>
+      <p class="fine">Uses ITA 2026 monthly work-income brackets (booklet updated April 2026) and BTL employee rates as of 1 January 2026. It does not model pension tax relief, travel, union dues, or special credit points. Confirm with the ITA and BTL before you rely on the figure.</p>`);
+  }
+
+  function arnona(form, root) {
+    const area = num(form, "area");
+    const rate = num(form, "rate");
+    const months = num(form, "months");
+    if (area === null || rate === null || months === null || area < 0 || rate < 0 || months < 0) {
+      show(root, `<h2>Results</h2><p class="warn">Enter floor area, a rate per square metre, and a number of months of 0 or more.</p>`);
+      return;
+    }
+    const annual = area * rate;
+    const period = annual * (months / 12);
+    show(root, `
+      <h2>Results</h2>
+      <p class="big">${money(period)}</p>
+      <p class="unit">arnona for ${months.toLocaleString()} month${months === 1 ? "" : "s"}</p>
+      <div class="stats">
+        ${stat("Annual bill at this rate", money(annual))}
+        ${stat("Average monthly", money(annual / 12))}
+        ${stat("Area × rate", money(area) + " × " + money(rate))}
+      </div>
+      <p class="fine">Rates are set by each city, zone, and property use, and often change each year. Enter the ₪ per m² figure from your municipality, not a national average.</p>`);
+  }
+
+  function masShevach(form, root) {
+    const sale = num(form, "sale");
+    const purchase = num(form, "purchase");
+    const costs = num(form, "costs") ?? 0;
+    const inflation = num(form, "inflation") ?? 0;
+    const rate = num(form, "rate");
+    if (sale === null || purchase === null || rate === null || sale < 0 || purchase < 0 || costs < 0 || inflation < 0 || rate < 0) {
+      show(root, `<h2>Results</h2><p class="warn">Enter sale price, purchase price, and a tax rate of 0 or more. Costs and inflation adjustment can be 0.</p>`);
+      return;
+    }
+    const nominal = sale - purchase - costs;
+    const taxable = Math.max(sale - purchase - costs - inflation, 0);
+    const tax = taxable * (rate / 100);
+    const warn = nominal <= 0 ? `<p class="warn">There is no nominal gain on these numbers, so estimated tax is zero.</p>` : "";
+    show(root, `
+      <h2>Results</h2>
+      <p class="big">${money(tax)}</p>
+      <p class="unit">estimated mas shevach (betterment tax)</p>
+      <div class="stats">
+        ${stat("Nominal gain (sale − purchase − costs)", money(nominal))}
+        ${stat("Inflation adjustment entered", money(inflation))}
+        ${stat("Estimated taxable gain", money(taxable))}
+        ${stat("Rate used", pct(rate))}
+      </div>
+      ${warn}
+      <p class="fine">This is a teaching estimate only. Residence exemptions, the linear exemption, inflation indexation rules, and corporate rates can change the real bill to zero or to a different figure. Check the ITA or a tax adviser.</p>`);
+  }
+
+  function tip(form, root) {
+    const bill = num(form, "bill");
+    const tipPct = num(form, "tip");
+    const people = num(form, "people");
+    if (bill === null || tipPct === null || people === null || bill < 0 || tipPct < 0 || people < 1) {
+      show(root, `<h2>Results</h2><p class="warn">Enter a bill of 0 or more, a tip percent, and at least one person.</p>`);
+      return;
+    }
+    const tipAmt = bill * (tipPct / 100);
+    const total = bill + tipAmt;
+    show(root, `
+      <h2>Results</h2>
+      <p class="big">${money(total)}</p>
+      <p class="unit">bill plus tip</p>
+      <div class="stats">
+        ${stat("Tip amount", money(tipAmt))}
+        ${stat("Per person", money(total / people))}
+        ${stat("Tip per person", money(tipAmt / people))}
+      </div>`);
+  }
+
+  function unitPrice(form, root) {
+    const priceA = num(form, "priceA");
+    const qtyA = num(form, "qtyA");
+    const priceB = num(form, "priceB");
+    const qtyB = num(form, "qtyB");
+    if (priceA === null || qtyA === null || priceA < 0 || qtyA <= 0) {
+      show(root, `<h2>Results</h2><p class="warn">Enter a price and a quantity greater than 0 for item A. Item B is optional.</p>`);
+      return;
+    }
+    const unitA = priceA / qtyA;
+    const hasB = priceB !== null && qtyB !== null;
+    if (hasB && (priceB < 0 || qtyB <= 0)) {
+      show(root, `<h2>Results</h2><p class="warn">If you compare a second item, its quantity must be greater than 0.</p>`);
+      return;
+    }
+    const unitB = hasB ? priceB / qtyB : null;
+    let compare = "";
+    if (unitB !== null) {
+      const better = unitA < unitB ? "Item A is cheaper per unit." : unitA > unitB ? "Item B is cheaper per unit." : "The unit prices are the same.";
+      compare = `${stat("Item B unit price", money(unitB))}${stat("Difference (A − B)", money(unitA - unitB))}<p>${better}</p>`;
+    }
+    show(root, `
+      <h2>Results</h2>
+      <p class="big">${money(unitA)}</p>
+      <p class="unit">unit price for item A (price ÷ quantity)</p>
+      <div class="stats">
+        ${stat("Item A unit price", money(unitA))}
+        ${compare}
+      </div>
+      <p class="fine">Use the same unit for both quantities (for example grams, ounces, or litres).</p>`);
+  }
+
+  function dateDiff(form, root) {
+    const start = form.elements.start.value;
+    const end = form.elements.end.value;
+    const inclusive = form.elements.inclusive && form.elements.inclusive.checked;
+    if (!start || !end) {
+      show(root, `<h2>Results</h2><p class="warn">Choose a start date and an end date.</p>`);
+      return;
+    }
+    const parse = (s) => {
+      const [y, m, d] = s.split("-").map(Number);
+      return Date.UTC(y, m - 1, d);
+    };
+    let a = parse(start), b = parse(end);
+    const swapped = b < a;
+    if (swapped) { const tmp = a; a = b; b = tmp; }
+    let days = Math.round((b - a) / 86400000);
+    if (inclusive) days += 1;
+    const weeks = days / 7;
+    show(root, `
+      <h2>Results</h2>
+      <p class="big">${days.toLocaleString()}</p>
+      <p class="unit">day${days === 1 ? "" : "s"} ${inclusive ? "(inclusive of both dates)" : "between the dates"}</p>
+      <div class="stats">
+        ${stat("Whole weeks", Math.floor(weeks).toLocaleString())}
+        ${stat("Weeks (decimal)", weeks.toLocaleString(undefined, { maximumFractionDigits: 2 }))}
+        ${stat("Hours (24-hour days)", (days * 24).toLocaleString())}
+      </div>
+      ${swapped ? `<p class="fine">The end date was earlier than the start date, so the gap is measured in reverse.</p>` : ""}`);
+  }
+
+  const calculators = { mortgage, capRate, cashOnCash, compound, freelance, vat, emi, salaryHourly, inflation, fire, rentVsBuy, percentage, israelNet, arnona, masShevach, tip, unitPrice, dateDiff };
 
   function bind(root) {
     const kind = root.getAttribute("data-calc");
