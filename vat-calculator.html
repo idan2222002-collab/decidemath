@@ -17,14 +17,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "WebApplication", "name": "VAT Calculator — Add or Remove Tax (Israel 18%, UK 20%) | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/vat-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free VAT calculator to add or remove tax. Presets for Israel 18%, UK 20%, Germany 19%, and Ireland/Netherlands 21%, plus any custom rate."}
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "VAT Calculator — Add or Remove Tax (Israel 18%, UK 20%) | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/vat-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free VAT calculator to add or remove tax. Presets for Israel 18%, UK 20%, Germany 19%, and Ireland/Netherlands 21%, plus any custom rate."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Israel VAT still 18%?", "acceptedAnswer": {"@type": "Answer", "text": "The standard rate moved to 18% on 1 January 2025. This tool does not update itself if the law changes, so check the Israel Tax Authority if you are unsure."}}, {"@type": "Question", "name": "Does this handle reduced rates?", "acceptedAnswer": {"@type": "Answer", "text": "Enter any custom rate. Reduced and zero rates vary by country and product, so the presets are only starting points."}}]}]}
   </script>
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <a class="logo" href="./">Decide<span>Math</span></a>
-      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="cap-rate-calculator.html">Cap rate</a><a href="freelance-rate-calculator.html">Freelance</a><a href="vat-calculator.html">VAT</a></nav>
+      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="emi-calculator.html">EMI</a><a href="fire-calculator.html">FIRE</a><a href="percentage-calculator.html">Percent</a></nav>
     </div>
   </header>
   <main class="wrap">
@@ -33,41 +33,25 @@
       <h1>VAT calculator</h1>
       <p class="lede">Add VAT to a net price or strip VAT from a gross price. Includes a current Israel 18% preset and other common rates.</p>
     </section>
-    
-<div class="layout" data-calc="vat">
-  <form class="panel">
-    <label for="amount">Amount</label>
-    <input id="amount" name="amount" type="number" inputmode="decimal" min="0" step="0.01" value="1000" required>
-    <label for="mode">Action</label>
+    <div class="layout" data-calc="vat"><form class="panel"><label for="amount">Amount</label>
+    <input id="amount" name="amount" type="number" inputmode="decimal" step="0.01" value="1000" required ><label for="mode">Action</label>
     <select id="mode" name="mode">
       <option value="add" selected>Add VAT to a net amount</option>
       <option value="remove">Remove VAT from a gross amount</option>
-    </select>
-    <label for="rate">VAT rate (%)</label>
-    <input id="rate" name="rate" type="number" inputmode="decimal" min="0" step="0.01" value="18" required>
-    <p class="presets" aria-label="Common VAT rates">
+    </select><label for="rate">VAT rate (%)</label>
+    <input id="rate" name="rate" type="number" inputmode="decimal" step="0.01" value="18" required ><p class="presets" aria-label="Common VAT rates">
       <button type="button" data-rate="18" aria-pressed="true">Israel 18%</button>
       <button type="button" data-rate="20">UK 20%</button>
       <button type="button" data-rate="19">Germany 19%</button>
       <button type="button" data-rate="21">Ireland / NL 21%</button>
       <button type="button" data-rate="0">0%</button>
-    </p>
-    <button class="primary" type="submit">Calculate VAT</button>
-  </form>
-  <div class="panel results" data-results></div>
-</div>
-<section class="prose">
-  <h2>VAT formulas</h2>
-  <p>To add VAT: gross = net × (1 + rate). To remove VAT: net = gross ÷ (1 + rate). The Israel preset uses 18%, the standard rate in force from 1 January 2025. Always confirm the current official rate before you issue an invoice.</p>
-</section>
-
-    <section class="faq">
-      <h2>Questions</h2>
-      <details><summary>Is Israel VAT still 18%?</summary><p>The standard rate moved to 18% on 1 January 2025. This tool does not update itself if the law changes, so check the Israel Tax Authority if you are unsure.</p></details><details><summary>Does this handle reduced rates?</summary><p>Enter any custom rate. Reduced and zero rates vary by country and product, so the presets are only starting points.</p></details>
-    </section>
+    </p><button class="primary" type="submit">Calculate</button></form><div class="panel results" data-results></div></div><section class="prose"><h2>VAT formulas</h2><p>To add VAT: gross = net × (1 + rate). To remove VAT: net = gross ÷ (1 + rate). The Israel preset uses 18%, the standard rate in force from 1 January 2025. Always confirm the current official rate before you issue an invoice.</p></section>
+    <section class="related"><h2>Related calculators</h2><p class="links"><a href="percentage-calculator.html">Percentage</a> <a href="freelance-rate-calculator.html">Freelance rate</a> <a href="salary-to-hourly-calculator.html">Salary to hourly</a></p></section>
+    <section class="faq"><h2>Questions</h2><details><summary>Is Israel VAT still 18%?</summary><p>The standard rate moved to 18% on 1 January 2025. This tool does not update itself if the law changes, so check the Israel Tax Authority if you are unsure.</p></details><details><summary>Does this handle reduced rates?</summary><p>Enter any custom rate. Reduced and zero rates vary by country and product, so the presets are only starting points.</p></details></section>
   </main>
   <footer>
     <div class="wrap">
+      <div class="tools"><h2>All calculators</h2><p class="links"><a href="mortgage-calculator.html">Mortgage payment</a> <a href="emi-calculator.html">Loan / EMI</a> <a href="cap-rate-calculator.html">Cap rate</a> <a href="cash-on-cash-calculator.html">Cash-on-cash return</a> <a href="rent-vs-buy-calculator.html">Rent vs buy</a> <a href="compound-interest-calculator.html">Compound interest</a> <a href="inflation-calculator.html">Inflation</a> <a href="fire-calculator.html">FIRE / retirement</a> <a href="freelance-rate-calculator.html">Freelance rate</a> <a href="salary-to-hourly-calculator.html">Salary to hourly</a> <a href="percentage-calculator.html">Percentage</a></p></div>
       <p>DecideMath is a free set of calculators. All math runs on your device. Nothing you type is sent to a server.</p>
       <p>Earnings for this site will come later from an optional tip link and relevant affiliate programs. No ads or trackers are installed yet.</p>
       <p class="fine">These tools are for education, not tax, legal, or investment advice. Check current rates and local rules before you act. &copy; 2026 DecideMath.</p>

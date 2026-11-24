@@ -17,14 +17,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "WebApplication", "name": "Compound Interest Calculator with Contributions | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/compound-interest-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free compound interest calculator with regular contributions and annual, monthly, or daily compounding. See future value and interest earned."}
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Compound Interest Calculator with Contributions | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/compound-interest-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free compound interest calculator with regular contributions and annual, monthly, or daily compounding. See future value and interest earned."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are contributions at the beginning or end of each period?", "acceptedAnswer": {"@type": "Answer", "text": "At the end of each period, which is the common ordinary-annuity assumption."}}, {"@type": "Question", "name": "Does this account for inflation or tax?", "acceptedAnswer": {"@type": "Answer", "text": "No. The result is a nominal future value before tax and inflation."}}]}]}
   </script>
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <a class="logo" href="./">Decide<span>Math</span></a>
-      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="cap-rate-calculator.html">Cap rate</a><a href="freelance-rate-calculator.html">Freelance</a><a href="vat-calculator.html">VAT</a></nav>
+      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="emi-calculator.html">EMI</a><a href="fire-calculator.html">FIRE</a><a href="percentage-calculator.html">Percent</a></nav>
     </div>
   </header>
   <main class="wrap">
@@ -33,47 +33,24 @@
       <h1>Compound interest calculator</h1>
       <p class="lede">Project how a starting balance and optional regular contributions can grow, with the compounding frequency you choose.</p>
     </section>
-    
-<div class="layout" data-calc="compound">
-  <form class="panel">
-    <label for="principal">Starting amount</label>
-    <input id="principal" name="principal" type="number" inputmode="decimal" min="0" step="0.01" value="10000" required>
-    <div class="row">
-      <div>
-        <label for="rate">Annual interest rate (%)</label>
-        <input id="rate" name="rate" type="number" inputmode="decimal" min="0" step="0.01" value="7" required>
-      </div>
-      <div>
-        <label for="years">Years</label>
-        <input id="years" name="years" type="number" inputmode="decimal" min="0" step="0.5" value="10" required>
-      </div>
-    </div>
-    <label for="contribution">Contribution each compounding period</label>
-    <input id="contribution" name="contribution" type="number" inputmode="decimal" min="0" step="0.01" value="200">
-    <label for="frequency">Compounding frequency</label>
+    <div class="layout" data-calc="compound"><form class="panel"><label for="principal">Starting amount</label>
+    <input id="principal" name="principal" type="number" inputmode="decimal" step="0.01" value="10000" required ><div class="row"><div><label for="rate">Annual interest rate (%)</label>
+    <input id="rate" name="rate" type="number" inputmode="decimal" step="0.01" value="7" required ></div><div><label for="years">Years</label>
+    <input id="years" name="years" type="number" inputmode="decimal" value="10" required min="0" step="0.5"></div></div><label for="contribution">Contribution each compounding period</label>
+    <input id="contribution" name="contribution" type="number" inputmode="decimal" step="0.01" value="200" required min="0"><label for="frequency">Compounding frequency</label>
     <select id="frequency" name="frequency">
       <option value="1">Annually</option>
       <option value="2">Semiannually</option>
       <option value="4">Quarterly</option>
       <option value="12" selected>Monthly</option>
       <option value="365">Daily</option>
-    </select>
-    <button class="primary" type="submit">Calculate future value</button>
-  </form>
-  <div class="panel results" data-results></div>
-</div>
-<section class="prose">
-  <h2>Compound interest formula</h2>
-  <p>Future value = P(1 + r/n)<sup>nt</sup> + PMT × [((1 + r/n)<sup>nt</sup> − 1) ÷ (r/n)]. Contributions are assumed at the end of each period. If the rate is 0, the result is simply starting cash plus all contributions.</p>
-</section>
-
-    <section class="faq">
-      <h2>Questions</h2>
-      <details><summary>Are contributions at the beginning or end of each period?</summary><p>At the end of each period, which is the common ordinary-annuity assumption.</p></details><details><summary>Does this account for inflation or tax?</summary><p>No. The result is a nominal future value before tax and inflation.</p></details>
-    </section>
+    </select><button class="primary" type="submit">Calculate</button></form><div class="panel results" data-results></div></div><section class="prose"><h2>Compound interest formula</h2><p>Future value = P(1 + r/n)<sup>nt</sup> + PMT × [((1 + r/n)<sup>nt</sup> − 1) ÷ (r/n)]. Contributions are assumed at the end of each period. If the rate is 0, the result is simply starting cash plus all contributions.</p></section>
+    <section class="related"><h2>Related calculators</h2><p class="links"><a href="fire-calculator.html">FIRE / retirement</a> <a href="inflation-calculator.html">Inflation</a> <a href="emi-calculator.html">Loan / EMI</a></p></section>
+    <section class="faq"><h2>Questions</h2><details><summary>Are contributions at the beginning or end of each period?</summary><p>At the end of each period, which is the common ordinary-annuity assumption.</p></details><details><summary>Does this account for inflation or tax?</summary><p>No. The result is a nominal future value before tax and inflation.</p></details></section>
   </main>
   <footer>
     <div class="wrap">
+      <div class="tools"><h2>All calculators</h2><p class="links"><a href="mortgage-calculator.html">Mortgage payment</a> <a href="emi-calculator.html">Loan / EMI</a> <a href="cap-rate-calculator.html">Cap rate</a> <a href="cash-on-cash-calculator.html">Cash-on-cash return</a> <a href="rent-vs-buy-calculator.html">Rent vs buy</a> <a href="inflation-calculator.html">Inflation</a> <a href="fire-calculator.html">FIRE / retirement</a> <a href="freelance-rate-calculator.html">Freelance rate</a> <a href="salary-to-hourly-calculator.html">Salary to hourly</a> <a href="percentage-calculator.html">Percentage</a> <a href="vat-calculator.html">VAT add or remove</a></p></div>
       <p>DecideMath is a free set of calculators. All math runs on your device. Nothing you type is sent to a server.</p>
       <p>Earnings for this site will come later from an optional tip link and relevant affiliate programs. No ads or trackers are installed yet.</p>
       <p class="fine">These tools are for education, not tax, legal, or investment advice. Check current rates and local rules before you act. &copy; 2026 DecideMath.</p>

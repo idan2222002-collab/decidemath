@@ -17,14 +17,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "WebApplication", "name": "Mortgage Calculator — Monthly Payment & Total Interest | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/mortgage-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free mortgage payment calculator for a fixed-rate loan. See monthly principal and interest, total paid, and total interest. Runs in your browser."}
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Mortgage Calculator — Monthly Payment & Total Interest | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/mortgage-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free mortgage payment calculator for a fixed-rate loan. See monthly principal and interest, total paid, and total interest. Runs in your browser."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this include taxes and insurance?", "acceptedAnswer": {"@type": "Answer", "text": "No. It only estimates principal and interest. Escrow, PMI, and fees would raise the real monthly bill."}}, {"@type": "Question", "name": "Can I use any currency?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Enter numbers in the currency you care about. The result uses the same units, with no conversion."}}]}]}
   </script>
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <a class="logo" href="./">Decide<span>Math</span></a>
-      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="cap-rate-calculator.html">Cap rate</a><a href="freelance-rate-calculator.html">Freelance</a><a href="vat-calculator.html">VAT</a></nav>
+      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="emi-calculator.html">EMI</a><a href="fire-calculator.html">FIRE</a><a href="percentage-calculator.html">Percent</a></nav>
     </div>
   </header>
   <main class="wrap">
@@ -33,37 +33,16 @@
       <h1>Mortgage payment calculator</h1>
       <p class="lede">Estimate the monthly principal and interest on a fixed-rate loan, plus how much interest you would pay over the full term.</p>
     </section>
-    
-<div class="layout" data-calc="mortgage">
-  <form class="panel">
-    <label for="principal">Loan amount</label>
-    <input id="principal" name="principal" type="number" inputmode="decimal" min="0" step="0.01" value="400000" required>
-    <div class="row">
-      <div>
-        <label for="rate">Annual interest rate (%)</label>
-        <input id="rate" name="rate" type="number" inputmode="decimal" min="0" step="0.01" value="6.5" required>
-      </div>
-      <div>
-        <label for="years">Term (years)</label>
-        <input id="years" name="years" type="number" inputmode="decimal" min="0.083" step="0.5" value="30" required>
-      </div>
-    </div>
-    <button class="primary" type="submit">Calculate payment</button>
-  </form>
-  <div class="panel results" data-results></div>
-</div>
-<section class="prose">
-  <h2>How the mortgage calculator works</h2>
-  <p>The monthly payment uses the standard fixed-rate formula: payment = P × r(1+r)<sup>n</sup> ÷ ((1+r)<sup>n</sup> − 1), where r is the monthly rate and n is the number of months. If the rate is 0, the payment is simply the principal divided by n.</p>
-</section>
-
-    <section class="faq">
-      <h2>Questions</h2>
-      <details><summary>Does this include taxes and insurance?</summary><p>No. It only estimates principal and interest. Escrow, PMI, and fees would raise the real monthly bill.</p></details><details><summary>Can I use any currency?</summary><p>Yes. Enter numbers in the currency you care about. The result uses the same units, with no conversion.</p></details>
-    </section>
+    <div class="layout" data-calc="mortgage"><form class="panel"><label for="principal">Loan amount</label>
+    <input id="principal" name="principal" type="number" inputmode="decimal" step="0.01" value="400000" required ><div class="row"><div><label for="rate">Annual interest rate (%)</label>
+    <input id="rate" name="rate" type="number" inputmode="decimal" step="0.01" value="6.5" required ></div><div><label for="years">Term (years)</label>
+    <input id="years" name="years" type="number" inputmode="decimal" value="30" required min="0.083" step="0.5"></div></div><button class="primary" type="submit">Calculate</button></form><div class="panel results" data-results></div></div><section class="prose"><h2>How the mortgage calculator works</h2><p>The monthly payment uses the standard fixed-rate formula: payment = P × r(1+r)<sup>n</sup> ÷ ((1+r)<sup>n</sup> − 1), where r is the monthly rate and n is the number of months. If the rate is 0, the payment is simply the principal divided by n.</p></section>
+    <section class="related"><h2>Related calculators</h2><p class="links"><a href="emi-calculator.html">Loan / EMI</a> <a href="rent-vs-buy-calculator.html">Rent vs buy</a> <a href="compound-interest-calculator.html">Compound interest</a></p></section>
+    <section class="faq"><h2>Questions</h2><details><summary>Does this include taxes and insurance?</summary><p>No. It only estimates principal and interest. Escrow, PMI, and fees would raise the real monthly bill.</p></details><details><summary>Can I use any currency?</summary><p>Yes. Enter numbers in the currency you care about. The result uses the same units, with no conversion.</p></details></section>
   </main>
   <footer>
     <div class="wrap">
+      <div class="tools"><h2>All calculators</h2><p class="links"><a href="emi-calculator.html">Loan / EMI</a> <a href="cap-rate-calculator.html">Cap rate</a> <a href="cash-on-cash-calculator.html">Cash-on-cash return</a> <a href="rent-vs-buy-calculator.html">Rent vs buy</a> <a href="compound-interest-calculator.html">Compound interest</a> <a href="inflation-calculator.html">Inflation</a> <a href="fire-calculator.html">FIRE / retirement</a> <a href="freelance-rate-calculator.html">Freelance rate</a> <a href="salary-to-hourly-calculator.html">Salary to hourly</a> <a href="percentage-calculator.html">Percentage</a> <a href="vat-calculator.html">VAT add or remove</a></p></div>
       <p>DecideMath is a free set of calculators. All math runs on your device. Nothing you type is sent to a server.</p>
       <p>Earnings for this site will come later from an optional tip link and relevant affiliate programs. No ads or trackers are installed yet.</p>
       <p class="fine">These tools are for education, not tax, legal, or investment advice. Check current rates and local rules before you act. &copy; 2026 DecideMath.</p>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIRE Calculator — Retirement Number and Years to FI | DecideMath</title>
+  <meta name="description" content="Free FIRE calculator. Estimate your financial-independence number from annual spending and a withdrawal rate, plus years to get there at your saving rate.">
+  <link rel="canonical" href="https://idan2222002-collab.github.io/decidemath/fire-calculator.html">
+  <meta property="og:title" content="FIRE Calculator — Retirement Number and Years to FI | DecideMath">
+  <meta property="og:description" content="Free FIRE calculator. Estimate your financial-independence number from annual spending and a withdrawal rate, plus years to get there at your saving rate.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://idan2222002-collab.github.io/decidemath/fire-calculator.html">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "FIRE Calculator — Retirement Number and Years to FI | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/fire-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free FIRE calculator. Estimate your financial-independence number from annual spending and a withdrawal rate, plus years to get there at your saving rate."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What withdrawal rate should I use?", "acceptedAnswer": {"@type": "Answer", "text": "4% is a common starting point from U.S. historical studies. A lower rate is more conservative; a higher rate is more aggressive."}}, {"@type": "Question", "name": "Does this include Social Security or a pension?", "acceptedAnswer": {"@type": "Answer", "text": "No. If you expect other income, lower the annual spending figure by that amount."}}]}]}
+  </script>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="./">Decide<span>Math</span></a>
+      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="emi-calculator.html">EMI</a><a href="fire-calculator.html">FIRE</a><a href="percentage-calculator.html">Percent</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <p class="kicker">Free · Private · In your browser</p>
+      <h1>FIRE / retirement calculator</h1>
+      <p class="lede">Estimate the portfolio you need for financial independence and how long current savings and contributions might take to reach it.</p>
+    </section>
+    <div class="layout" data-calc="fire"><form class="panel"><label for="spend">Annual spending in retirement</label>
+    <input id="spend" name="spend" type="number" inputmode="decimal" step="0.01" value="40000" required ><label for="swr">Safe withdrawal rate (%)</label>
+    <input id="swr" name="swr" type="number" inputmode="decimal" value="4" required min="0.01" step="0.1"><label for="savings">Current savings</label>
+    <input id="savings" name="savings" type="number" inputmode="decimal" step="0.01" value="50000" required min="0"><label for="contrib">Monthly contribution</label>
+    <input id="contrib" name="contrib" type="number" inputmode="decimal" step="0.01" value="1000" required min="0"><label for="return">Expected annual return (%)</label>
+    <input id="return" name="return" type="number" inputmode="decimal" step="0.01" value="7" required ><button class="primary" type="submit">Calculate</button></form><div class="panel results" data-results></div></div><section class="prose"><h2>How the FIRE number is calculated</h2><p>FIRE number = annual spending ÷ withdrawal rate. The popular 4% rule implies 25 times annual spending. Time to FIRE assumes monthly contributions and monthly compounding at a constant return, which is a planning estimate, not a guarantee.</p></section>
+    <section class="related"><h2>Related calculators</h2><p class="links"><a href="compound-interest-calculator.html">Compound interest</a> <a href="inflation-calculator.html">Inflation</a> <a href="salary-to-hourly-calculator.html">Salary to hourly</a></p></section>
+    <section class="faq"><h2>Questions</h2><details><summary>What withdrawal rate should I use?</summary><p>4% is a common starting point from U.S. historical studies. A lower rate is more conservative; a higher rate is more aggressive.</p></details><details><summary>Does this include Social Security or a pension?</summary><p>No. If you expect other income, lower the annual spending figure by that amount.</p></details></section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div class="tools"><h2>All calculators</h2><p class="links"><a href="mortgage-calculator.html">Mortgage payment</a> <a href="emi-calculator.html">Loan / EMI</a> <a href="cap-rate-calculator.html">Cap rate</a> <a href="cash-on-cash-calculator.html">Cash-on-cash return</a> <a href="rent-vs-buy-calculator.html">Rent vs buy</a> <a href="compound-interest-calculator.html">Compound interest</a> <a href="inflation-calculator.html">Inflation</a> <a href="freelance-rate-calculator.html">Freelance rate</a> <a href="salary-to-hourly-calculator.html">Salary to hourly</a> <a href="percentage-calculator.html">Percentage</a> <a href="vat-calculator.html">VAT add or remove</a></p></div>
+      <p>DecideMath is a free set of calculators. All math runs on your device. Nothing you type is sent to a server.</p>
+      <p>Earnings for this site will come later from an optional tip link and relevant affiliate programs. No ads or trackers are installed yet.</p>
+      <p class="fine">These tools are for education, not tax, legal, or investment advice. Check current rates and local rules before you act. &copy; 2026 DecideMath.</p>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

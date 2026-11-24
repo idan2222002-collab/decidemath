@@ -17,14 +17,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "WebApplication", "name": "Freelance Rate Calculator — Hourly and Day Rate | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/freelance-rate-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free freelance hourly rate calculator. Convert a target income, expenses, billable weeks, and a tax buffer into hourly, daily, and weekly rates."}
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Freelance Rate Calculator — Hourly and Day Rate | DecideMath", "url": "https://idan2222002-collab.github.io/decidemath/freelance-rate-calculator.html", "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Free freelance hourly rate calculator. Convert a target income, expenses, billable weeks, and a tax buffer into hourly, daily, and weekly rates."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why not just divide salary by 2,000 hours?", "acceptedAnswer": {"@type": "Answer", "text": "Because freelancers have unpaid holidays, admin, sales time, and expenses. Using only billable hours keeps the rate honest."}}, {"@type": "Question", "name": "What buffer should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Many freelancers start around 25–40% to cover tax and downtime, then adjust for their country and workload."}}]}]}
   </script>
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <a class="logo" href="./">Decide<span>Math</span></a>
-      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="cap-rate-calculator.html">Cap rate</a><a href="freelance-rate-calculator.html">Freelance</a><a href="vat-calculator.html">VAT</a></nav>
+      <nav><a class="home" href="./">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="emi-calculator.html">EMI</a><a href="fire-calculator.html">FIRE</a><a href="percentage-calculator.html">Percent</a></nav>
     </div>
   </header>
   <main class="wrap">
@@ -33,41 +33,18 @@
       <h1>Freelance rate calculator</h1>
       <p class="lede">Turn the income you want, your expenses, and realistic billable time into a minimum hourly and day rate.</p>
     </section>
-    
-<div class="layout" data-calc="freelance">
-  <form class="panel">
-    <label for="income">Target take-home / salary equivalent</label>
-    <input id="income" name="income" type="number" inputmode="decimal" min="0" step="0.01" value="80000" required>
-    <label for="expenses">Annual business expenses</label>
-    <input id="expenses" name="expenses" type="number" inputmode="decimal" min="0" step="0.01" value="8000">
-    <div class="row">
-      <div>
-        <label for="weeks">Billable weeks per year</label>
-        <input id="weeks" name="weeks" type="number" inputmode="decimal" min="0.5" step="0.5" value="46" required>
-      </div>
-      <div>
-        <label for="hours">Billable hours per week</label>
-        <input id="hours" name="hours" type="number" inputmode="decimal" min="0.5" step="0.5" value="25" required>
-      </div>
-    </div>
-    <label for="buffer">Tax and unpaid-time buffer (%)</label>
-    <input id="buffer" name="buffer" type="number" inputmode="decimal" min="0" step="0.1" value="30">
-    <button class="primary" type="submit">Calculate rates</button>
-  </form>
-  <div class="panel results" data-results></div>
-</div>
-<section class="prose">
-  <h2>How to set a freelance rate</h2>
-  <p>Add business expenses to the income you want, then lift that total by a buffer for tax and unpaid admin. Divide by realistic billable hours — not every hour you work is billed. The 8-hour day rate is the hourly rate times 8, even if your week uses a different billable-hour count.</p>
-</section>
-
-    <section class="faq">
-      <h2>Questions</h2>
-      <details><summary>Why not just divide salary by 2,000 hours?</summary><p>Because freelancers have unpaid holidays, admin, sales time, and expenses. Using only billable hours keeps the rate honest.</p></details><details><summary>What buffer should I use?</summary><p>Many freelancers start around 25–40% to cover tax and downtime, then adjust for their country and workload.</p></details>
-    </section>
+    <div class="layout" data-calc="freelance"><form class="panel"><label for="income">Target take-home / salary equivalent</label>
+    <input id="income" name="income" type="number" inputmode="decimal" step="0.01" value="80000" required ><label for="expenses">Annual business expenses</label>
+    <input id="expenses" name="expenses" type="number" inputmode="decimal" step="0.01" value="8000" required min="0"><div class="row"><div><label for="weeks">Billable weeks per year</label>
+    <input id="weeks" name="weeks" type="number" inputmode="decimal" value="46" required min="0.5" step="0.5"></div><div><label for="hours">Billable hours per week</label>
+    <input id="hours" name="hours" type="number" inputmode="decimal" value="25" required min="0.5" step="0.5"></div></div><label for="buffer">Tax and unpaid-time buffer (%)</label>
+    <input id="buffer" name="buffer" type="number" inputmode="decimal" value="30" required min="0" step="0.1"><button class="primary" type="submit">Calculate</button></form><div class="panel results" data-results></div></div><section class="prose"><h2>How to set a freelance rate</h2><p>Add business expenses to the income you want, then lift that total by a buffer for tax and unpaid admin. Divide by realistic billable hours — not every hour you work is billed. The 8-hour day rate is the hourly rate times 8, even if your week uses a different billable-hour count.</p></section>
+    <section class="related"><h2>Related calculators</h2><p class="links"><a href="salary-to-hourly-calculator.html">Salary to hourly</a> <a href="vat-calculator.html">VAT add or remove</a> <a href="percentage-calculator.html">Percentage</a></p></section>
+    <section class="faq"><h2>Questions</h2><details><summary>Why not just divide salary by 2,000 hours?</summary><p>Because freelancers have unpaid holidays, admin, sales time, and expenses. Using only billable hours keeps the rate honest.</p></details><details><summary>What buffer should I use?</summary><p>Many freelancers start around 25–40% to cover tax and downtime, then adjust for their country and workload.</p></details></section>
   </main>
   <footer>
     <div class="wrap">
+      <div class="tools"><h2>All calculators</h2><p class="links"><a href="mortgage-calculator.html">Mortgage payment</a> <a href="emi-calculator.html">Loan / EMI</a> <a href="cap-rate-calculator.html">Cap rate</a> <a href="cash-on-cash-calculator.html">Cash-on-cash return</a> <a href="rent-vs-buy-calculator.html">Rent vs buy</a> <a href="compound-interest-calculator.html">Compound interest</a> <a href="inflation-calculator.html">Inflation</a> <a href="fire-calculator.html">FIRE / retirement</a> <a href="salary-to-hourly-calculator.html">Salary to hourly</a> <a href="percentage-calculator.html">Percentage</a> <a href="vat-calculator.html">VAT add or remove</a></p></div>
       <p>DecideMath is a free set of calculators. All math runs on your device. Nothing you type is sent to a server.</p>
       <p>Earnings for this site will come later from an optional tip link and relevant affiliate programs. No ads or trackers are installed yet.</p>
       <p class="fine">These tools are for education, not tax, legal, or investment advice. Check current rates and local rules before you act. &copy; 2026 DecideMath.</p>

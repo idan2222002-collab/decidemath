@@ -169,3 +169,10 @@ footer {
   font-size: 0.9rem;
 }
 .fine { font-size: 0.82rem; color: var(--muted); margin-top: 1rem; }
+.related, .tools { padding: 0 0 2.5rem; }
+.related h2, .tools h2 { font-size: 1.25rem; margin: 0 0 0.7rem; }
+.tools, footer .tools { max-width: none; }
+.links { display: flex; flex-wrap: wrap; gap: 0.45rem 0.85rem; }
+.links a { color: var(--accent-ink); text-decoration: none; font-size: 0.92rem; }
+.links a:hover { text-decoration: underline; }
+footer .tools { margin-top: 1rem; }
