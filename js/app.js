@@ -14,9 +14,10 @@
     const v = parseFloat(raw);
     return raw === "" || Number.isNaN(v) ? null : v;
   };
+  const KOFI = `<p class="kofi-line">Find this useful? <a href="https://ko-fi.com/kerenil" rel="noopener noreferrer">Support DecideMath on Ko-fi</a>.</p>`;
   const show = (root, html) => {
     const box = root.querySelector("[data-results]");
-    box.innerHTML = html;
+    box.innerHTML = html + KOFI;
   };
   const stat = (label, value) =>
     `<div class="stat"><span>${label}</span><strong>${value}</strong></div>`;

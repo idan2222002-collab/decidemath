@@ -181,3 +181,19 @@ footer .tools { margin-top: 1rem; }
 .cat { margin: 0 0 1.75rem; }
 .cat h2 { font-size: 1.2rem; margin: 0 0 0.65rem; }
 .howto { max-width: 44rem; color: var(--muted); margin: 0 0 1rem; }
+
+.kofi-btn {
+  display: inline-block;
+  margin-top: 0.9rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: #fffdf8;
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.kofi-btn:hover { background: #f8e6dc; color: var(--accent); }
+.kofi-line { margin-top: 1rem; font-size: 0.9rem; color: var(--muted); }
+.kofi-line a { font-weight: 600; }
