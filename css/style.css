@@ -197,3 +197,18 @@ footer .tools { margin-top: 1rem; }
 .kofi-btn:hover { background: #f8e6dc; color: var(--accent); }
 .kofi-line { margin-top: 1rem; font-size: 0.9rem; color: var(--muted); }
 .kofi-line a { font-weight: 600; }
+
+.product-box {
+  background: var(--card, #fffdf8);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.05rem 1.15rem;
+  margin: 0 0 2.2rem;
+  max-width: 44rem;
+}
+.product-box h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+.product-box ul { margin: 0 0 0.45rem; padding-inline-start: 1.2rem; }
+.product-box li { margin: 0.15rem 0; }
+.product-box p { margin: 0.35rem 0 0; }
+.product-box a { color: var(--accent-ink); }
+.product-box .fine { color: var(--muted); margin-top: 0.6rem; }
